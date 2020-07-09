@@ -155,7 +155,63 @@ class Solution {
 ```
 
 ### 采用类似归并排序的方法 -- 自顶向下
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
 
+    public ListNode mergeKLists(ListNode[] linkLists) {
+        if ( linkLists == null || linkLists.length == 0 ) {
+            return null;
+        }
+        return mergeHelper(linkLists, 0, linkLists.length - 1);
+    }
+
+    private ListNode mergeHelper(ListNode[] linkLists, int start, int end) {
+        if ( start == end ) {
+            return linkLists[start];
+        }
+        int mid = (end - start) / 2 + start;
+        ListNode left = mergeHelper(linkLists, start, mid);
+        ListNode right = mergeHelper(linkLists, mid + 1, end);
+        return mergeTwoLists(left, right);
+    }
+
+    /**
+    * merge two sorted lists in place
+    */
+    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(0);
+        ListNode tail = head;
+        while ( l1 != null && l2 != null ) {
+            if ( l1.val < l2.val ) {
+                tail.next = l1;
+                tail = l1;
+                l1 = l1.next;
+            }
+            else {
+                tail.next = l2;
+                tail = l2;
+                l2 = l2.next;
+            }
+        }
+        if ( l1 != null ) {
+            tail.next = l1;
+        }
+        if ( l2 != null ) {
+            tail.next = l2;
+        }
+        return head.next;
+    }
+}
+
+```
 
 ## 归并排序对比
-
+![alt text](./images/merge-sort.png)
