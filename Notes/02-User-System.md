@@ -27,3 +27,6 @@
 - LRU Cache: Least Recently Used Cache
 - LFU Cache: Least Frequently Used Cache
 
+**另见LFU专题和LRU专题。**
+
+
