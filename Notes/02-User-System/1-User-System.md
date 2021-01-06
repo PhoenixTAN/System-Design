@@ -150,12 +150,4 @@ class UserService:
 如果一张数据表特别大。
 - 一个粗暴的想法：from_user_id % 10. 但问题就是10台机器还是不够用，从10变成11的时候，会有大规模的数据迁移，服务器压力大，容易挂，容易造成数据的不一致。怎么办呢？**用一致性哈希算法Consistent Hashing**。后面章节会详细讲。
 
-**先简单讲讲一致性哈希算法**.  
-% n可以说是一种简单的Hash算法，但是n变成n+1的时候，key % n 和 key % (n+1)的结果基本上都不一样，所以这个算法可以成为不一致hash.
 
-![inconsistent-hashing](./images/inconsistent-hashing.png)
-
-怎么办呢？**我们把key模一个很大的数，比如360**.
-那如果n从2变为3，那就只有三分之一的数据移动。
-
-![consistent-hashing-simple-solution](./images/consistent-hashing-simple-solution.png)
