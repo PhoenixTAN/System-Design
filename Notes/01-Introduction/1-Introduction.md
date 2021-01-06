@@ -13,7 +13,7 @@
 1. Scenario. 
     - System features.
     - Queries per second (QPS).
-    - Daily Active User (DAU). 一日内登录或者使用了某个产品的用户数（去除chong'fu）。
+    - Daily Active User (DAU). 一日内登录或者使用了某个产品的用户数（去除重复）。
     - Interfaces.
 2. Service. 讲大功能进行分类。将大系统拆分为小服务。
 3. **Storage(最重要).** 存储：数据如何存储与访问。
