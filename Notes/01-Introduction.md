@@ -38,7 +38,6 @@
 |-------|---------|--------------------|
 |  1k   |   10k   |   100K ~ 1000K     |
 
-
 ## 新鲜事系统 News Feed
 - 你登录朋友圈之后看到的信息流
 - RSS Reader 简单讯息聚合订阅（Really Simple Syndication feed）
@@ -66,13 +65,13 @@
 
 
 ### Push Model
-算法
+**算法**
 1. 为每个用户建一个List存储他的News Feed信息
 2. 用户发一个Tweet之后，将该推文逐个推送到每个用户的News Feed List中。
     - 关键词：Fanout
 3. 用户需要查看News Feed时，只需要从该News Feed List中读取前100条即可
 
-复杂度分析
+**复杂度分析**
 - News Feed => 1次DB Read
 - Post a tweet => N个分析，需要进行N次DB Writes
     - 好处就是可以用异步任务在后台执行，无需用户等待。
@@ -80,7 +79,7 @@
 
 ![alt text](./images/push-model.png)
 
-缺陷：
+**缺陷：**
 - 如果followers多，比如一千万，那么就会很慢，消息更新不及时。可以多加几台机器来进行异步任务。
 - 如果有很多僵尸粉。。。
 
